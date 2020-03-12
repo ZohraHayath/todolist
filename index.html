@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .normal {
+            font-family:Arial, Helvetica, sans-serif;
+            font-style: oblique;
+            text-align: center;
+            }
+        
+        
+        .list {
+            font-family: Arial;
+            font-size: large;
+            text-align: center; padding: 20px;
+            text-transform: capitalize;
+             display: block; 
+        }
+        .flag {
+            text-decoration-line:line-through;
+        }
+        ul {
+  list-style-type: none;
+}
+    </style>
+    
+
+</head>
+<body>
+    <main id="todo">
+        <h1 class="normal">{{header}}</h1>
+        <div class="list" display="block">
+            <ul>
+                <li v-for="(item,index) in list" >
+                    <input type="checkbox" v-model="item.check">
+                    <span :class="{ flag: item.check }">{{item.name}}</span>
+                    <button type="button" @click="remove(index)">Remove</button>
+                </li>
+            </ul>
+        </div>
+        
+        <form class="normal" @submit.prevent="add">
+            <input type="text" v-model="newItem" name="newItem"> <br>
+            <button type="submit">Add Item to List</button>
+        </form>
+        
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="todoapp.js"></script>
+
+</body>
+</html>
